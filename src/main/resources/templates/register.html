@@ -38,6 +38,13 @@
                         nicht leer sein.</p>
                 </div>
 
+                <div class="field">
+                    <label th:text="#{register.zip_code}" for="zip_code">PLZ</label>
+                    <input id="zip_code" name="zip_code" th:field="*{zipCode}" th:errorclass="fieldError" type="number"
+                           pattern="[0-9]{5}" required="required"/><br/>
+                    <p th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Die Postleitzahl darf nicht leer sein und darf nur aus Zahlen bestehen.</p>
+                </div>
+
                 <button type="submit" class="ui button" th:text="#{register.submit}">Registrieren</button>
             </form>
         </section>

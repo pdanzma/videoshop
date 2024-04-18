@@ -39,6 +39,7 @@ public class Customer extends AbstractAggregateRoot<CustomerIdentifier> {
 	private @EmbeddedId CustomerIdentifier id = new CustomerIdentifier();
 
 	private String address;
+	private Integer zipCode;
 
 	// (｡◕‿◕｡)
 	// Jedem Customer ist genau ein UserAccount zugeordnet, um später über den UserAccount an den
@@ -49,9 +50,10 @@ public class Customer extends AbstractAggregateRoot<CustomerIdentifier> {
 	@SuppressWarnings("unused")
 	private Customer() {}
 
-	public Customer(UserAccount userAccount, String address) {
+	public Customer(UserAccount userAccount, String address, Integer zipCode) {
 		this.userAccount = userAccount;
 		this.address = address;
+		this.zipCode = zipCode;
 	}
 
 	/*
@@ -69,6 +71,12 @@ public class Customer extends AbstractAggregateRoot<CustomerIdentifier> {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Integer getZipCode() { return zipCode; }
+
+	public void setZipCode(Integer zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public UserAccount getUserAccount() {
